@@ -1,3 +1,4 @@
+import 'package:calendar_test/core/constants/week_days.dart';
 import 'package:flutter/material.dart';
 
 class Calendar extends StatelessWidget {
@@ -10,10 +11,27 @@ class Calendar extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'September',
-            style: Theme.of(context).textTheme.headline3,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20.0),
+            child: Text(
+              'September 2019',
+              style: Theme.of(context).textTheme.headline3,
+            ),
           ),
+          Container(
+            decoration: BoxDecoration(
+                color: Theme.of(context).primaryColorLight,
+                borderRadius: BorderRadius.circular(25)),
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: weekDays
+                  .map((e) => Center(
+                        child: Text(e),
+                      ))
+                  .toList(),
+            ),
+          )
         ],
       ),
     );
