@@ -6,9 +6,13 @@ class CalendarRepositoryImpl {
     return firstDayNextMonth.difference(firstDayThisMonth).inDays;
   }
 
+  List<DateTime> dayMonthes = [];
+
   List<DateTime> getListOfDays(DateTime currentDate) {
-    return List<int>.generate(daysInMonth(currentDate), (i) => i + 1)
+    dayMonthes = List<int>.generate(daysInMonth(currentDate), (i) => i + 1)
         .map((e) => DateTime(currentDate.year, currentDate.month, e))
         .toList();
+
+    return dayMonthes;
   }
 }

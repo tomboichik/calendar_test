@@ -1,5 +1,6 @@
 import 'package:calendar_test/domain/calendar/calendar_repository_impl.dart';
 import 'package:calendar_test/widgets/calendar_with_notes/calendar.dart';
+import 'package:calendar_test/widgets/calendar_with_notes/notes.dart';
 import 'package:flutter/material.dart';
 
 class CalendarWithNotes extends StatefulWidget {
@@ -25,6 +26,7 @@ class _CalendarWithNotesState extends State<CalendarWithNotes> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Notes(),
         Calendar(
           dateTime: currentDate,
           calendarRepositoryImpl: calendarRepositoryImpl,
