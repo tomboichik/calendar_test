@@ -37,15 +37,18 @@ class _CalendarWithNotesState extends State<CalendarWithNotes> {
           dateTime: currentDate,
           calendarRepositoryImpl: calendarRepositoryImpl,
           chooseDate: (e) {
+            DateTime? lastChoosenDate = choosenDate;
             setState(() {
               choosenDate = null;
             });
 
-            Future.delayed(Duration(milliseconds: 500), () {
-              setState(() {
-                choosenDate = e;
+            if (e != lastChoosenDate) {
+              Future.delayed(const Duration(milliseconds: 500), () {
+                setState(() {
+                  choosenDate = e;
+                });
               });
-            });
+            }
           },
         ),
       ],
