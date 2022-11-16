@@ -1,3 +1,4 @@
+import 'package:calendar_test/widgets/calendar_with_notes/calendar_with_notes.dart';
 import 'package:flutter/material.dart';
 
 class DemoPage extends StatelessWidget {
@@ -5,6 +6,13 @@ class DemoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        child: Center(
+          child: CalendarWithNotes(),
+        ),
+      ),
+    );
   }
 }
