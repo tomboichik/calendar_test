@@ -15,4 +15,10 @@ class CalendarRepositoryImpl {
 
     return dayMonthes;
   }
+
+  Map<DateTime, String> notedDates = {};
+
+  setNote(DateTime choosenDate, String text) {
+    notedDates[choosenDate] = text;
+  }
 }

@@ -18,24 +18,33 @@ class _CalendarWithNotesState extends State<CalendarWithNotes> {
   DateTime? choosenDate;
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (choosenDate != null) Notes(),
+        if (choosenDate != null)
+          Notes(
+            choosenDate: choosenDate!,
+            calendarRepositoryImpl: calendarRepositoryImpl,
+            submitDate: (value) {
+              setState(() {
+                choosenDate = null;
+              });
+            },
+          ),
         Calendar(
           choosenDate: choosenDate,
           dateTime: currentDate,
           calendarRepositoryImpl: calendarRepositoryImpl,
           chooseDate: (e) {
             setState(() {
-              choosenDate = e;
+              choosenDate = null;
+            });
+
+            Future.delayed(Duration(milliseconds: 500), () {
+              setState(() {
+                choosenDate = e;
+              });
             });
           },
         ),

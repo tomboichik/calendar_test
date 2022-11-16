@@ -68,7 +68,14 @@ class Calendar extends StatelessWidget {
                                       color: AppColors.primaryColor,
                                       borderRadius: BorderRadius.circular(15),
                                     )
-                                  : null,
+                                  : calendarRepositoryImpl.notedDates[e] != null
+                                      ? BoxDecoration(
+                                          border: Border.all(
+                                              color: AppColors.primaryColor),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        )
+                                      : null,
                               padding: const EdgeInsets.all(8),
                               width: 50,
                               child: Center(
