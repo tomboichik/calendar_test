@@ -11,6 +11,11 @@ final appThemeData = ThemeData(
         color: AppColors.colorBlack,
         fontWeight: FontWeight.w600,
       ),
+      headline6: TextStyle(
+        fontSize: 16,
+        color: AppColors.colorBlack,
+        fontWeight: FontWeight.w600,
+      ),
       bodyText1: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w400,

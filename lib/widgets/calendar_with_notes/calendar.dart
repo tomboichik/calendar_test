@@ -1,9 +1,12 @@
 import 'package:calendar_test/core/constants/date_constants.dart';
+import 'package:calendar_test/core/ui/app_colors.dart';
 import 'package:calendar_test/domain/calendar/calendar_repository_impl.dart';
 import 'package:flutter/material.dart';
 
 class Calendar extends StatelessWidget {
   final DateTime dateTime;
+  final Function chooseDate;
+  final DateTime? choosenDate;
 
   final CalendarRepositoryImpl calendarRepositoryImpl;
 
@@ -11,6 +14,8 @@ class Calendar extends StatelessWidget {
     Key? key,
     required this.dateTime,
     required this.calendarRepositoryImpl,
+    required this.chooseDate,
+    required this.choosenDate,
   }) : super(key: key);
 
   @override
@@ -50,14 +55,34 @@ class Calendar extends StatelessWidget {
                     .map((
                       e,
                     ) =>
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: e.day == 1 ? e.weekday * 25.0 : 0.0),
-                          child: Container(
-                            padding: const EdgeInsets.all(8),
-                            width: 50,
-                            child: Center(
-                              child: Text(e.day.toString()),
+                        InkWell(
+                          onTap: () {
+                            chooseDate(e);
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: e.day == 1 ? e.weekday * 25.0 : 0.0),
+                            child: Container(
+                              decoration: choosenDate == e
+                                  ? BoxDecoration(
+                                      color: AppColors.primaryColor,
+                                      borderRadius: BorderRadius.circular(15),
+                                    )
+                                  : null,
+                              padding: const EdgeInsets.all(8),
+                              width: 50,
+                              child: Center(
+                                child: Text(
+                                  e.day.toString(),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline6!
+                                      .copyWith(
+                                          color: choosenDate != e
+                                              ? Colors.black
+                                              : Colors.white),
+                                ),
+                              ),
                             ),
                           ),
                         ))

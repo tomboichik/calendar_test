@@ -15,6 +15,8 @@ class _CalendarWithNotesState extends State<CalendarWithNotes> {
 
   CalendarRepositoryImpl calendarRepositoryImpl = CalendarRepositoryImpl();
 
+  DateTime? choosenDate;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -26,10 +28,16 @@ class _CalendarWithNotesState extends State<CalendarWithNotes> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Notes(),
+        if (choosenDate != null) Notes(),
         Calendar(
+          choosenDate: choosenDate,
           dateTime: currentDate,
           calendarRepositoryImpl: calendarRepositoryImpl,
+          chooseDate: (e) {
+            setState(() {
+              choosenDate = e;
+            });
+          },
         ),
       ],
     );
